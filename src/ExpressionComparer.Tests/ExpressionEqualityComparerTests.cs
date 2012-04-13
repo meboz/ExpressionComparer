@@ -2,11 +2,10 @@
 using System.Linq.Expressions;
 using NUnit.Framework;
 
-namespace ExpressionComparer.Tests {
-    
-
+namespace ExpressionComparer.Tests
+{
     [TestFixture]
-    public class ExpressionEqualityComparerTests 
+    public class ExpressionEqualityComparerTests
     {
         [Test]
         public void can_compare_simple_func()

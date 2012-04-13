@@ -3,16 +3,22 @@ using System.Linq.Expressions;
 
 namespace ExpressionComparer
 {
-    
-    public class ExpressionEqualityComparer : IEqualityComparer<Expression> {
+    public class ExpressionEqualityComparer : IEqualityComparer<Expression>
+    {
         public static ExpressionEqualityComparer Instance = new ExpressionEqualityComparer();
 
-        public bool Equals(Expression a, Expression b) {
+        #region IEqualityComparer<Expression> Members
+
+        public bool Equals(Expression a, Expression b)
+        {
             return new ExpressionComparison(a, b).AreEqual;
         }
 
-        public int GetHashCode(Expression expression) {
+        public int GetHashCode(Expression expression)
+        {
             return new HashCodeCalculation(expression).HashCode;
         }
+
+        #endregion
     }
 }

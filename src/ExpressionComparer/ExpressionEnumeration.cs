@@ -6,20 +6,14 @@ namespace ExpressionComparer
 {
     public class ExpressionEnumeration : ExpressionVisitor, IEnumerable<Expression>
     {
-        private List<Expression> _expressions = new List<Expression>();
+        private readonly List<Expression> _expressions = new List<Expression>();
 
         public ExpressionEnumeration(Expression expression)
         {
             Visit(expression);
         }
 
-        protected override void Visit(Expression expression)
-        {
-            if (expression == null) return;
-
-            _expressions.Add(expression);
-            base.Visit(expression);
-        }
+        #region IEnumerable<Expression> Members
 
         public IEnumerator<Expression> GetEnumerator()
         {
@@ -30,6 +24,16 @@ namespace ExpressionComparer
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
+        }
+
+        #endregion
+
+        protected override void Visit(Expression expression)
+        {
+            if (expression == null) return;
+
+            _expressions.Add(expression);
+            base.Visit(expression);
         }
     }
 }
